@@ -1,16 +1,9 @@
 import { Link } from "react-router-dom";
 import { FaPhoneAlt, FaWhatsapp, FaCheckCircle } from "react-icons/fa";
-import SEO from "../components/SEO";
 
 const Home = () => {
   return (
     <>
-      <SEO
-        title="Avdesh Glass House | Glass & Aluminium Experts in Ghaziabad"
-        description="Avdesh Glass House provides premium glass, aluminium & UPVC solutions in Ghaziabad since 2007. Call now for expert consultation."
-        keywords="glass shop in ghaziabad, aluminium work ghaziabad, upvc doors windows ghaziabad, spider fitting glass"
-        canonical="https://www.avdeshglasshouse.com/"
-      />
       {/* ================= HERO SECTION ================= */}
       <section
         className="relative h-[95vh] flex items-center bg-cover bg-center"

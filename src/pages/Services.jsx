@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
-import SEO from "../components/SEO";
 
 const services = [
   {
@@ -38,13 +37,6 @@ const services = [
 const Services = () => {
   return (
     <>
-      <SEO
-  title="Glass & Aluminium Services in Ghaziabad | Avdesh Glass House"
-  description="Front elevation, spider fitting, UPVC doors & windows, aluminium partitions and more in Ghaziabad."
-  keywords="glass services ghaziabad, aluminium services ghaziabad, spider fitting glass"
-  canonical="https://www.avdeshglasshouse.com/services"
-/>
-
       {/* ================= PAGE HEADER ================= */}
       <section className="bg-dark py-20 text-white">
         <div className="max-w-7xl mx-auto px-4">

@@ -11,7 +11,6 @@ import Services from "./pages/Services";
 import Products from "./pages/Products";
 import Clients from "./pages/Clients";
 import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
 import WhatsAppFloat from "./components/WhatsAppFloat";
 
 function App() {
@@ -31,9 +30,6 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/clients" element={<Clients />} />
             <Route path="/contact" element={<Contact />} />
-
-            {/* 404 */}
-            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <WhatsAppFloat/>

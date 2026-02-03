@@ -1,16 +1,8 @@
 import { FaCheckCircle } from "react-icons/fa";
-import SEO from "../components/SEO";
 
 const About = () => {
   return (
     <>
-      <SEO
-        title="About Avdesh Glass House | Trusted Glass Experts Since 2007"
-        description="Learn about Avdesh Glass House, a trusted glass & aluminium solutions provider in Ghaziabad with 15+ years of experience."
-        keywords="about avdesh glass house, glass company ghaziabad"
-        canonical="https://www.avdeshglasshouse.com/about"
-      />
-
       {/* ================= PAGE HEADER ================= */}
       <section className="bg-dark py-20 text-white">
         <div className="max-w-7xl mx-auto px-4">
@@ -26,6 +18,7 @@ const About = () => {
       {/* ================= ABOUT CONTENT ================= */}
       <section className="py-20 bg-light">
         <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+          
           <div>
             <h2 className="text-3xl font-heading font-bold text-primary">
               Who We Are
@@ -38,9 +31,9 @@ const About = () => {
             </p>
 
             <p className="mt-4 text-gray-700 leading-relaxed">
-              From residential projects to large commercial developments, we
-              specialize in premium glass, aluminium and UPVC solutions tailored
-              to meet the exact needs of our clients.
+              From residential projects to large commercial developments,
+              we specialize in premium glass, aluminium and UPVC solutions
+              tailored to meet the exact needs of our clients.
             </p>
           </div>
 
@@ -55,6 +48,7 @@ const About = () => {
       {/* ================= MISSION & VISION ================= */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12">
+          
           <div className="border rounded-lg p-8 shadow-sm hover:rotate-1">
             <h3 className="text-2xl font-heading font-bold text-primary">
               Our Mission
@@ -110,8 +104,7 @@ const About = () => {
           Ready to Transform Your Space?
         </h2>
         <p className="mt-4 text-gray-300">
-          Get in touch with Avdesh Glass House for expert glass & aluminium
-          solutions.
+          Get in touch with Avdesh Glass House for expert glass & aluminium solutions.
         </p>
 
         <a

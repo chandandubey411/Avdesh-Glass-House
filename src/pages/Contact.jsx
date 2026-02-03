@@ -1,5 +1,4 @@
 import { useState } from "react";
-import SEO from "../components/SEO";
 
 const Contact = () => {
   const [result, setResult] = useState("");
@@ -28,13 +27,6 @@ const Contact = () => {
 
   return (
     <>
-      <SEO
-  title="Contact Avdesh Glass House | Glass Shop in Ghaziabad"
-  description="Contact Avdesh Glass House for glass & aluminium work in Ghaziabad. Call or WhatsApp for quick response."
-  keywords="contact glass shop ghaziabad, aluminium work indirapuram"
-  canonical="https://www.avdeshglasshouse.com/contact"
-/>
-
       {/* ================= PAGE HEADER ================= */}
       <section className="bg-dark py-20 text-white">
         <div className="max-w-7xl mx-auto px-4">

@@ -1,6 +1,5 @@
 import { FaCheckCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import SEO from "../components/SEO";
 
 const products = [
   {
@@ -44,13 +43,6 @@ const products = [
 const Products = () => {
   return (
     <>
-    <SEO
-  title="Glass, Aluminium & UPVC Products | Avdesh Glass House"
-  description="Explore premium glass, aluminium, UPVC products, LED mirrors and sliding door hardware."
-  keywords="glass products ghaziabad, aluminium products, upvc doors windows"
-  canonical="https://www.avdeshglasshouse.com/products"
-/>
-
       {/* ================= PAGE HEADER ================= */}
       <section className="bg-dark py-20 text-white">
         <div className="max-w-7xl mx-auto px-4">
