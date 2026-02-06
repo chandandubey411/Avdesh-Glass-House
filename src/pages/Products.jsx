@@ -5,13 +5,13 @@ const products = [
   {
     title: "Glass",
     desc: "From toughened to decorative glass, our glass solutions combine safety, durability and aesthetics.",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEjNS_SeNWScx-0w7BzOH69bbW4AG2TF8yHg&s",
+    image: "/image/fancyglass.jpeg",
     points: ["Toughened Glass", "Decorative Glass", "Frosted Glass", "Laminated Glass"],
   },
   {
     title: "Aluminium",
     desc: "High-quality aluminium materials for modern construction and architectural designs.",
-    image: "https://images.jdmagicbox.com/quickquotes/images_main/aluminium-glazing-375436224-hkrb5.jpg",
+    image: "/image/aluminiumglasspartition.jpeg",
     points: ["Aluminium Frames", "Partitions", "Sliding Systems", "Structural Glazing"],
   },
   {

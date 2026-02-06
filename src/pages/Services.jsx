@@ -5,7 +5,7 @@ const services = [
   {
     title: "Front Elevation",
     desc: "Modern and customized front elevation solutions combining aesthetics with durability.",
-    image: "https://s3-blog.homelane.com/design-ideas-pre/wp-content/uploads/2022/11/contemporary-glass-elevation.jpg",
+    image: "/image/frontelevattion.jpeg",
   },
   {
     title: "Spider Fitting",
@@ -15,12 +15,12 @@ const services = [
   {
     title: "UPVC Doors & Windows",
     desc: "Energy-efficient, low-maintenance UPVC doors and windows for homes and offices.",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr3pX3Qm3ARdDBt_3fxrIWzgvttdFe8WKFqA&s",
+    image: "/image/upvcwindow.jpeg",
   },
   {
     title: "Aluminium Partition",
     desc: "Flexible aluminium partition solutions for offices and commercial spaces.",
-    image: "https://lh3.googleusercontent.com/p/AF1QipNyVH8AjrPsmTFWEq3cQFieVrrudYnkuPCTIkaW=s1360-w1360-h1020-rw",
+    image: "/image/aluminiumpartition.jpeg",
   },
   {
     title: "Interior Glass Designing",
