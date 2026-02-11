@@ -33,7 +33,7 @@ const Navbar = () => {
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
             <a
-              href="tel:+919811811906"
+              href="tel:099711 58340"
               className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-md hover:bg-dark transition"
             >
               <FaPhoneAlt size={14} />
@@ -41,7 +41,7 @@ const Navbar = () => {
             </a>
 
             <a
-              href="https://wa.me/919811811906"
+              href="https://wa.me/09971158340"
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 border border-primary text-primary px-4 py-2 rounded-md hover:bg-primary hover:text-white transition"
@@ -73,13 +73,13 @@ const Navbar = () => {
 
               <div className="flex gap-3 px-4 pt-3">
                 <a
-                  href="tel:+919811811906"
+                  href="tel:09971158340"
                   className="flex-1 text-center bg-primary text-white py-2 rounded-md"
                 >
                   Call
                 </a>
                 <a
-                  href="https://wa.me/919811811906"
+                  href="https://wa.me/09971158340"
                   className="flex-1 text-center border border-primary text-primary py-2 rounded-md"
                 >
                   WhatsApp

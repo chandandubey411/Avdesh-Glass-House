@@ -97,7 +97,7 @@ const Clients = () => {
           </a>
 
           <a
-            href="https://wa.me/919811811906"
+            href="https://wa.me/099711 58340"
             className="border border-white px-6 py-3 rounded-md hover:bg-white hover:text-dark transition"
           >
             WhatsApp

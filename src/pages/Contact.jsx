@@ -8,7 +8,7 @@ const Contact = () => {
     setResult("Sending...");
 
     const formData = new FormData(e.target);
-    formData.append("access_key", "YOUR_WEB3FORMS_ACCESS_KEY");
+    formData.append("access_key", "136cf125-a0c3-45cc-b867-e07b1aa5413d");
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -118,8 +118,8 @@ const Contact = () => {
 
               <p className="mt-3 text-gray-700">
                 <strong>Phone:</strong><br />
-                <a href="tel:+919811811906" className="text-primary">
-                  +91 98118 11906
+                <a href="tel:09971158340" className="text-primary">
+                  09971158340
                 </a>
               </p>
 

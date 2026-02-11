@@ -31,7 +31,7 @@ const Home = () => {
             </a>
 
             <a
-              href="https://wa.me/919811811906"
+              href="https://wa.me/09971158340"
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 border border-white px-6 py-3 rounded-md hover:bg-white hover:text-dark transition"
@@ -149,7 +149,7 @@ const Home = () => {
 
         <div className="mt-8 flex justify-center gap-4 flex-wrap">
           <a
-            href="tel:+919811811906"
+            href="tel:099711 58340"
             className="bg-primary px-6 py-3 rounded-md hover:bg-secondary transition"
           >
             Call Now

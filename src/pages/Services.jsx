@@ -122,7 +122,7 @@ const Services = () => {
 
         <div className="mt-6 flex justify-center gap-4 flex-wrap">
           <a
-            href="tel:+919811811906"
+            href="tel:09971158340"
             className="bg-primary px-6 py-3 rounded-md hover:bg-secondary transition"
           >
             Call Now
