@@ -27,14 +27,18 @@ const Contact = () => {
 
   return (
     <>
-      {/* ================= PAGE HEADER ================= */}
-      <section className="bg-dark py-20 text-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-heading font-bold">
+      {/* ================= HERO BANNER ================= */}
+      <section 
+        className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-cover bg-center"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=2000')" }}
+      >
+        <div className="absolute inset-0 bg-[#0B4F8A]/80 mix-blend-multiply"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
             Contact Us
           </h1>
-          <p className="mt-4 max-w-2xl text-gray-300">
-            Get in touch with Avdesh Glass House for expert glass & aluminium solutions.
+          <p className="text-xl text-[#2FA4E7] font-medium max-w-3xl mx-auto leading-relaxed">
+            <span className="text-white font-normal">Get in touch with Avdesh Glass House for expert glass & aluminium solutions.</span>
           </p>
         </div>
       </section>

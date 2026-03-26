@@ -1,23 +1,42 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaPhoneAlt, FaWhatsapp, FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      
+      // Make navbar hidden if scrolling down and we are past the navbar height
+      if (currentScrollPos > prevScrollPos && currentScrollPos > 100) {
+        setVisible(false);
+      } else {
+        setVisible(true);
+      }
+      
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollPos]);
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-md">
-      <nav className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+    <header 
+      className={`sticky top-0 z-50 bg-white shadow-md transition-transform duration-300 ease-in-out ${
+        visible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
+      <nav className="max-w-7xl mx-auto px-1">
+        <div className="flex items-center justify-between py-1">
           
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <span className="text-2xl font-heading font-bold text-primary">
-              Avdesh
-            </span>
-            <span className="ml-1 text-sm font-semibold text-gray-600">
-              Glass House
-            </span>
+            <img src="/logo.png" alt="Avdesh Glass House Logo" className="h-[80px] md:h-[100px] w-auto" />
           </Link>
 
           {/* Desktop Menu */}
@@ -26,6 +45,7 @@ const Navbar = () => {
             <li><Link to="/about" className="hover:text-primary">About</Link></li>
             <li><Link to="/services" className="hover:text-primary">Services</Link></li>
             <li><Link to="/products" className="hover:text-primary">Products</Link></li>
+            <li><Link to="/projects" className="hover:text-primary">Projects</Link></li>
             <li><Link to="/clients" className="hover:text-primary">Clients</Link></li>
             <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
           </ul>
@@ -68,6 +88,7 @@ const Navbar = () => {
               <li><Link onClick={() => setOpen(false)} to="/about">About</Link></li>
               <li><Link onClick={() => setOpen(false)} to="/services">Services</Link></li>
               <li><Link onClick={() => setOpen(false)} to="/products">Products</Link></li>
+              <li><Link onClick={() => setOpen(false)} to="/projects">Projects</Link></li>
               <li><Link onClick={() => setOpen(false)} to="/clients">Clients</Link></li>
               <li><Link onClick={() => setOpen(false)} to="/contact">Contact</Link></li>
 
