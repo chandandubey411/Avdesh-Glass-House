@@ -29,7 +29,7 @@ const products = [
   {
     title: "LED Mirrors",
     desc: "Modern, elegantly backlit LED mirrors designed to completely elevate and enhance luxury bathrooms and interior spaces.",
-    image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1200",
+    image: "/image/led_mirror.jpg",
     points: ["Energy Efficient", "Modern Look", "Long Lasting LEDs", "Custom Sizes"],
   },
   {

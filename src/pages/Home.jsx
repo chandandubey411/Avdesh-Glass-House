@@ -32,19 +32,19 @@ const sliderData = [
 const featuredServices = [
   {
     title: "Front Elevation",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800"
+    image: "/image/frontelevattion.jpeg"
   },
   {
     title: "Spider Fitting",
-    image: "https://images.unsplash.com/photo-1428366890462-dd4baecf492b?auto=format&fit=crop&q=80&w=800"
+    image: "/image/spider_fitting.jpeg"
   },
   {
     title: "UPVC Doors",
-    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800"
+    image: "image/upvc.jpeg"
   },
   {
     title: "Interior Glass",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800"
+    image: "/image/interior_glass.jpg"
   }
 ];
 
