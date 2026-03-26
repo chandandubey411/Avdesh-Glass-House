@@ -126,6 +126,12 @@ const Contact = () => {
                   09971158340
                 </a>
               </p>
+              <p className="mt-3 text-gray-700">
+                <strong>Phone:</strong><br />
+                <a href="tel:09971158340" className="text-primary">
+                  09811811906
+                </a>
+              </p>
 
               <p className="mt-3 text-gray-700">
                 <strong>Email:</strong><br />

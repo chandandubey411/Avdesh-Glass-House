@@ -68,6 +68,12 @@ const Footer = () => {
                 +91 99711 58340
               </a>
             </li>
+            <li className="flex gap-3">
+              <FaPhoneAlt className="mt-1 text-primary" />
+              <a href="tel:+919971158340" className="hover:text-white">
+                +91 9811811906
+              </a>
+            </li>
 
             <li className="flex gap-3">
               <FaEnvelope className="mt-1 text-primary" />
