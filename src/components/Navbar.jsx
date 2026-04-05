@@ -46,7 +46,6 @@ const Navbar = () => {
             <li><Link to="/services" className="hover:text-primary">Services</Link></li>
             <li><Link to="/products" className="hover:text-primary">Products</Link></li>
             <li><Link to="/projects" className="hover:text-primary">Projects</Link></li>
-            <li><Link to="/clients" className="hover:text-primary">Clients</Link></li>
             <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
           </ul>
 
@@ -89,7 +88,6 @@ const Navbar = () => {
               <li><Link onClick={() => setOpen(false)} to="/services">Services</Link></li>
               <li><Link onClick={() => setOpen(false)} to="/products">Products</Link></li>
               <li><Link onClick={() => setOpen(false)} to="/projects">Projects</Link></li>
-              <li><Link onClick={() => setOpen(false)} to="/clients">Clients</Link></li>
               <li><Link onClick={() => setOpen(false)} to="/contact">Contact</Link></li>
 
               <div className="flex gap-3 px-4 pt-3">

@@ -26,6 +26,15 @@ const projectsData = [
 
 const categories = ["All", "Airports", "Commercial Buildings", "Hotels", "Residential", "Hospitals and Institutions", "Others"];
 
+const clients = [
+  { name: "Residential Projects", location: "Ghaziabad" },
+  { name: "Commercial Complexes", location: "Noida" },
+  { name: "Office Interiors", location: "Indirapuram" },
+  { name: "Retail Showrooms", location: "Vaishali" },
+  { name: "Corporate Offices", location: "Delhi NCR" },
+  { name: "Hospitality Projects", location: "Delhi NCR" },
+];
+
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedImage, setSelectedImage] = useState(null);
@@ -36,18 +45,18 @@ const Projects = () => {
 
   return (
     <>
-      {/* ================= HERO BANNER ================= */}
+      {/* ================= PAGE HEADER ================= */}
       <section 
         className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-cover bg-center"
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000')" }}
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000')" }}
       >
-        <div className="absolute inset-0 bg-dark/70"></div>
+        <div className="absolute inset-0 bg-[#0B4F8A]/85 mix-blend-multiply"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-4">
-            Our Projects Gallery
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
+            Our Projects
           </h1>
-          <p className="text-xl text-gray-200 max-w-2xl mx-auto">
-            Explore our extensive portfolio of premium glass and aluminium installations across various sectors.
+          <p className="text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
+            Explore our extensive portfolio of premium glass and aluminium installations across various sectors, trusted by clients across Delhi NCR.
           </p>
         </div>
       </section>
@@ -116,6 +125,88 @@ const Projects = () => {
             className="inline-block bg-primary text-white font-semibold px-8 py-4 rounded-md hover:bg-dark transition shadow-lg"
           >
             Start Your Project With Us
+          </a>
+        </div>
+      </section>
+
+      {/* ================= CLIENT OVERVIEW ================= */}
+      <section className="py-20 bg-light">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-heading font-bold text-primary">
+            Building Long-Term Relationships
+          </h2>
+
+          <p className="mt-4 max-w-3xl mx-auto text-gray-700">
+            Over the years, Avdesh Glass House has successfully delivered
+            premium glass, aluminium and UPVC solutions for a wide range
+            of residential, commercial and corporate projects.
+          </p>
+        </div>
+      </section>
+
+      {/* ================= CLIENT CARDS ================= */}
+      <section className="pb-20 bg-light">
+        <div className="max-w-7xl mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {clients.map((client, index) => (
+            <div
+              key={index}
+              className="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition"
+            >
+              <h3 className="text-xl font-heading font-semibold text-dark">
+                {client.name}
+              </h3>
+
+              <p className="mt-2 text-gray-600">
+                Location: {client.location}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ================= TRUST STATS ================= */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-center">
+          <div className="p-6 border rounded-lg">
+            <h3 className="text-4xl font-bold text-primary">15+</h3>
+            <p className="mt-2 text-gray-700">Years of Experience</p>
+          </div>
+
+          <div className="p-6 border rounded-lg">
+            <h3 className="text-4xl font-bold text-primary">1000+</h3>
+            <p className="mt-2 text-gray-700">Happy Clients</p>
+          </div>
+
+          <div className="p-6 border rounded-lg">
+            <h3 className="text-4xl font-bold text-primary">5.0★</h3>
+            <p className="mt-2 text-gray-700">Google Rating</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= CTA ================= */}
+      <section className="py-20 bg-dark text-white text-center">
+        <h2 className="text-3xl font-heading font-bold">
+          Want to Be Our Next Happy Client?
+        </h2>
+
+        <p className="mt-4 text-gray-300">
+          Get in touch with Avdesh Glass House for premium glass & aluminium solutions.
+        </p>
+
+        <div className="mt-6 flex justify-center gap-4 flex-wrap">
+          <a
+            href="tel:+919811811906"
+            className="bg-primary px-6 py-3 rounded-md hover:bg-secondary transition"
+          >
+            Call Now
+          </a>
+
+          <a
+            href="https://wa.me/09971158340"
+            className="border border-white px-6 py-3 rounded-md hover:bg-white hover:text-dark transition"
+          >
+            WhatsApp
           </a>
         </div>
       </section>

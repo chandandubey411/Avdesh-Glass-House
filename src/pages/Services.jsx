@@ -15,7 +15,7 @@ const services = [
   {
     title: "UPVC Doors & Windows",
     desc: "Energy-efficient, highly durable, and low-maintenance UPVC door and window systems designed to withstand the elements while providing perfect insulation.",
-    image: "/image/upvc_door_window.jpeg",
+    image: "/image/upvc_door_windows.jpeg",
   },
   {
     title: "Aluminium Partition",
