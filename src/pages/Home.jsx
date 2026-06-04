@@ -1,50 +1,44 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaCheckCircle, FaChevronLeft, FaChevronRight, FaTimes } from "react-icons/fa";
-
-const sliderData = [
-  {
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000",
-    quote: "Strength & Safety You Can Trust – Premium Toughened Glass"
-  },
-  {
-    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=2000",
-    quote: "Energy Efficient & Noise-Free – Modern UPVC Profiles"
-  },
-  {
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000",
-    quote: "Sleek & Durable – Custom Aluminium Frameworks"
-  },
-  {
-    image: "https://images.unsplash.com/photo-1428366890462-dd4baecf492b?auto=format&fit=crop&q=80&w=2000",
-    quote: "Seamless Views & Modern Facades – Expert Spider Fittings"
-  },
-  {
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000",
-    quote: "Enhance Your Interiors – Decorative & Designer Glass Works"
-  },
-  {
-    image: "https://images.unsplash.com/photo-1605276373954-0c4a0dac5b12?auto=format&fit=crop&q=80&w=2000",
-    quote: "Minimalist & Elegant – Slim Profile Glass Railings"
-  }
-];
+import { FaCheckCircle, FaTimes, FaBuilding, FaWindowMaximize, FaBorderAll, FaTh } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
+import HeroSlider from "../components/HeroSlider";
+import AnimatedSection from "../components/AnimatedSection";
+import Counter from "../components/Counter";
+import BeforeAfterSlider from "../components/BeforeAfterSlider";
+import Testimonials from "../components/Testimonials";
+import { 
+  pageTransition, 
+  fadeUp, 
+  fadeLeft, 
+  fadeRight, 
+  staggerContainer 
+} from "../utils/motion";
 
 const featuredServices = [
   {
     title: "Front Elevation",
-    image: "/image/frontelevattion.jpeg"
+    desc: "Custom architectural glass facade structural design and elevation systems.",
+    image: "/image/frontelevattion.jpeg",
+    icon: FaBuilding
   },
   {
-    title: "Spider Fitting",
-    image: "/image/spider_fitting.jpeg"
+    title: "Spider Glazing",
+    desc: "Minimalist frameless spider fittings for structural transparency.",
+    image: "/image/spider_fitting.jpeg",
+    icon: FaTh
   },
   {
-    title: "UPVC Doors",
-    image: "image/upvc.jpeg"
+    title: "UPVC Profiles",
+    desc: "Energy-efficient, soundproof, and low-maintenance UPVC windows & doors.",
+    image: "image/upvc.jpeg",
+    icon: FaWindowMaximize
   },
   {
-    title: "Interior Glass",
-    image: "/image/interior_glass.jpg"
+    title: "Interior Glass Works",
+    desc: "Designer mirrors, slim profiles, custom partitions, and decorative solutions.",
+    image: "/image/interior_glass.jpg",
+    icon: FaBorderAll
   }
 ];
 
@@ -62,194 +56,201 @@ const projectShowcase = [
 ];
 
 const Home = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
 
-  // Auto-slide functionality
-  useEffect(() => {
-    const slideInterval = setInterval(() => {
-      setCurrentSlide((prev) => (prev === sliderData.length - 1 ? 0 : prev + 1));
-    }, 5000);
-    return () => clearInterval(slideInterval);
-  }, []);
-
-  const nextSlide = () => {
-    setCurrentSlide(currentSlide === sliderData.length - 1 ? 0 : currentSlide + 1);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide(currentSlide === 0 ? sliderData.length - 1 : currentSlide - 1);
-  };
-
   return (
-    <>
-      {/* ================= HEADER SLIDER SECTION ================= */}
-      <section className="relative h-[70vh] w-full overflow-hidden group">
-        {/* Slides */}
-        {sliderData.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-            }`}
-          >
-            {/* Background Image */}
-            <img
-              src={slide.image}
-              alt="Slider background"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            {/* Overlay for better text readability */}
-            <div className="absolute inset-0 bg-dark/60"></div>
-
-            {/* Slider Content */}
-            <div className="relative h-full flex items-center justify-center text-center px-4">
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold text-white max-w-4xl tracking-wide leading-tight drop-shadow-lg">
-                {slide.quote}
-              </h2>
-            </div>
-          </div>
-        ))}
-
-        {/* Navigation Arrows */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 text-white/70 hover:text-white bg-black/20 hover:bg-black/50 p-3 rounded-full transition opacity-0 group-hover:opacity-100 backdrop-blur-sm"
-        >
-          <FaChevronLeft size={24} />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 text-white/70 hover:text-white bg-black/20 hover:bg-black/50 p-3 rounded-full transition opacity-0 group-hover:opacity-100 backdrop-blur-sm"
-        >
-          <FaChevronRight size={24} />
-        </button>
-
-        {/* Dot Indicators */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-          {sliderData.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentSlide ? "bg-white scale-125" : "bg-white/50 hover:bg-white/80"
-              }`}
-            />
-          ))}
-        </div>
-      </section>
+    <motion.div
+      variants={pageTransition}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
+      {/* ================= HERO SLIDER ================= */}
+      <HeroSlider />
 
       {/* ================= ABOUT PREVIEW ================= */}
-      <section className="py-20 bg-light">
-        <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-          <div className="flex flex-col gap-6">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary">
-              Crafting Excellence in <br className="hidden md:block" /> Glass & Aluminium Since 2007
+      <section className="py-24 bg-light overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-16 items-center">
+          
+          {/* Column 1: Image & Floating Experience Badge */}
+          <AnimatedSection variant={fadeLeft} className="relative flex justify-center">
+            <div className="relative w-full max-w-md">
+              <img
+                src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=2000"
+                alt="Glass and aluminium building work"
+                className="rounded-3xl shadow-2xl border-8 border-white object-cover aspect-[4/5] w-full"
+              />
+              {/* Floating Experience Badge */}
+              <motion.div
+                initial={{ scale: 0, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ type: "spring", stiffness: 200, delay: 0.4 }}
+                className="absolute -bottom-6 -left-6 bg-[#0A4D8C] border border-white/20 text-white p-6 rounded-3xl shadow-2xl flex flex-col items-center justify-center text-center w-40 h-40"
+              >
+                <span className="text-4xl font-extrabold font-heading text-[#2FA4E7]">
+                  <Counter value="15+" />
+                </span>
+                <span className="text-xs font-bold uppercase tracking-widest mt-2 text-white/95">
+                  Years of Trust
+                </span>
+              </motion.div>
+            </div>
+          </AnimatedSection>
+
+          {/* Column 2: Text Contents & Counters */}
+          <AnimatedSection variant={fadeRight} className="flex flex-col gap-6">
+            <span className="text-xs font-bold tracking-widest text-[#2FA4E7] uppercase">Company Profile</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-extrabold text-primary leading-tight">
+              Crafting Premium Glass elevations Since 2007
             </h2>
 
             <p className="text-gray-700 leading-relaxed text-lg">
-              Welcome to <strong>Avdesh Glass House</strong>, the leading purveyor of premium glass and aluminium architectural solutions in Ghaziabad and the wider NCR region. For over 15 years, we have transformed ordinary spaces into stunning, modern environments.
+              Welcome to <strong>Avdhesh Glass House</strong>, the NCR's leading purveyor of architectural glass, ACP cladding, UPVC, and aluminium solutions. We transform raw blueprints into breathtaking landmarks.
             </p>
             
-            <p className="text-gray-700 leading-relaxed">
-              Whether you are designing a sleek corporate office or a contemporary smart home, our expert team brings precision engineering to every project. We specialize in custom Toughened Glass, robust UPVC frameworks, structural Spider Fittings, and elegant Slim Profile Railings—merging aesthetic brilliance with unmatched durability.
+            <p className="text-gray-600 leading-relaxed text-sm">
+              We specialize in state-of-the-art Toughened Glass, robust structural glazing, UPVC insulation profiles, frameless spider fittings, and custom-designed interior glass works, blending premium materials with flawless execution.
             </p>
 
-            <ul className="grid grid-cols-2 gap-3 mt-2 text-gray-800 font-medium">
-              <li className="flex items-center gap-2">
-                <FaCheckCircle className="text-secondary" /> 100% Quality Assured
-              </li>
-              <li className="flex items-center gap-2">
-                <FaCheckCircle className="text-secondary" /> Custom Designs
-              </li>
-              <li className="flex items-center gap-2">
-                <FaCheckCircle className="text-secondary" /> Expert Installation
-              </li>
-              <li className="flex items-center gap-2">
-                <FaCheckCircle className="text-secondary" /> Timely Delivery
-              </li>
-            </ul>
-
-            <div>
-              <Link
-                to="/about"
-                className="inline-block mt-4 bg-primary text-white font-semibold px-6 py-3 rounded-md hover:bg-dark transition shadow-md"
-              >
-                Discover Our Story
-              </Link>
+            {/* Counters Grid */}
+            <div className="grid grid-cols-2 gap-8 mt-4 pt-8 border-t border-gray-100">
+              <div className="flex flex-col">
+                <span className="text-3xl md:text-4xl font-extrabold text-[#0A4D8C] font-heading">
+                  <Counter value="500+" />
+                </span>
+                <span className="text-xs font-bold text-gray-500 mt-1.5 uppercase tracking-wider">Projects Completed</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-3xl md:text-4xl font-extrabold text-[#0A4D8C] font-heading">
+                  <Counter value="1000+" />
+                </span>
+                <span className="text-xs font-bold text-gray-500 mt-1.5 uppercase tracking-wider">Happy Clients</span>
+              </div>
             </div>
-          </div>
 
-          <img
-            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=2000"
-            alt="Glass and aluminium building work"
-            className="rounded-lg shadow-xl border-4 border-white"
-          />
+            <div className="mt-4">
+              <motion.div
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
+                className="inline-block"
+              >
+                <Link
+                  to="/about"
+                  className="inline-block bg-[#0A4D8C] text-white font-bold px-8 py-3.5 rounded-xl hover:bg-dark transition shadow-lg text-sm"
+                >
+                  Discover Our Story
+                </Link>
+              </motion.div>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* ================= SERVICES ================= */}
-      <section className="py-20 relative bg-[#3c4a63]">
-        {/* Top half white background to create the overlap effect from screenshot */}
+      <section className="py-24 relative bg-[#3c4a63] overflow-hidden">
+        {/* Top half white background to create the overlap effect */}
         <div className="absolute top-0 left-0 w-full h-[60%] bg-white -z-0"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-center text-primary mb-16">
-            Our Services
-          </h2>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
+          <AnimatedSection variant={fadeUp} className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-xs font-bold tracking-widest text-[#2FA4E7] uppercase">Our Capabilities</span>
+            <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-primary mt-1">
+              Architectural Services
+            </h2>
+          </AnimatedSection>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredServices.map((service, index) => (
-              <div
-                key={index}
-                className="relative group rounded-lg overflow-hidden shadow-xl h-[350px] bg-white border-b-4 border-transparent hover:border-[#facc15] transition-all cursor-pointer"
-              >
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                {/* Text Badge positioned like the screenshot */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-10/12 bg-white text-center py-3 shadow-md rounded">
-                  <h3 className="font-heading font-bold text-dark whitespace-nowrap px-2 truncate">
-                    {service.title}
-                  </h3>
-                </div>
-              </div>
-            ))}
-          </div>
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-60px" }}
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
+            {featuredServices.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <motion.div
+                  key={index}
+                  variants={fadeUp}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                  className="relative group rounded-3xl overflow-hidden shadow-xl h-[400px] bg-dark flex flex-col justify-end cursor-pointer"
+                >
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-750 group-hover:scale-110 opacity-70 group-hover:opacity-60"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent" />
+                  
+                  {/* Glass Card content */}
+                  <div className="relative z-10 p-6 m-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white flex flex-col gap-2 transition-all duration-500 ease-out opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 group-hover:bg-white/15">
+                    <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center border border-white/20 text-[#2FA4E7]">
+                      <Icon size={18} />
+                    </div>
+                    <h3 className="font-heading font-bold text-lg mt-2 text-white">
+                      {service.title}
+                    </h3>
+                    <p className="text-xs text-white/80 leading-relaxed font-body">
+                      {service.desc}
+                    </p>
+                    <Link to="/services" className="text-xs font-bold text-[#2FA4E7] flex items-center gap-1 hover:text-white mt-2 transition-colors">
+                      Read More &rarr;
+                    </Link>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
 
-          <div className="text-center mt-16 mb-4 text-white">
-            <p className="text-lg md:text-xl font-body mb-8">
+          <AnimatedSection variant={fadeUp} className="text-center mt-16 mb-4 text-white">
+            <p className="text-lg md:text-xl font-body mb-8 opacity-90">
               Join us on a journey where Glass meets Innovation and Dreams take Shape.
             </p>
-            <Link
-              to="/services"
-              className="inline-block bg-[#facc15] text-[#0f172a] px-8 py-3 rounded hover:bg-[#eab308] transition shadow-md font-bold"
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-block"
             >
-              Know More
-            </Link>
-          </div>
+              <Link
+                to="/services"
+                className="inline-block bg-[#facc15] text-[#0f172a] px-8 py-3.5 rounded-xl hover:bg-[#eab308] transition shadow-lg font-bold text-sm"
+              >
+                Know More
+              </Link>
+            </motion.div>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* ================= PROJECTS SHOWCASE ================= */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <AnimatedSection variant={fadeUp} className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-xs font-bold tracking-widest text-[#2FA4E7] uppercase">Case Studies</span>
+            <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-primary mt-1 mb-6">
               Our Signature Projects
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed">
               From the shining facades of iconic commercial buildings and international airports to the elegant transparency gracing countless modern homes and hospitals, our glass solutions define the skyline. Explore the spaces we've transformed through precision engineering and visionary design.
             </p>
-          </div>
+          </AnimatedSection>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-60px" }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6"
+          >
             {projectShowcase.map((project, index) => (
-              <div 
+              <motion.div 
                 key={index} 
-                className="relative group overflow-hidden rounded-lg shadow-md aspect-square cursor-pointer"
+                variants={fadeUp}
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="relative group overflow-hidden rounded-2xl shadow-md aspect-square cursor-pointer border border-gray-100"
                 onClick={() => setSelectedImage(project.image)}
               >
                 <img 
@@ -257,25 +258,80 @@ const Home = () => {
                   alt={project.title} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-dark/95 via-dark/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute bottom-0 left-0 w-full p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="text-secondary font-medium text-sm mb-1 uppercase tracking-wider">{project.category}</p>
-                  <h3 className="text-white text-xl font-heading font-semibold">{project.title}</h3>
+                  <p className="text-secondary font-medium text-xs mb-1 uppercase tracking-wider">{project.category}</p>
+                  <h3 className="text-white text-lg font-heading font-bold leading-tight">{project.title}</h3>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ================= BEFORE/AFTER FACADE COMPARISON ================= */}
+      <section className="py-24 bg-[#F7F9FC] border-t border-b border-gray-100/50 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-16 items-center">
+          <AnimatedSection variant={fadeLeft} className="flex flex-col gap-6">
+            <span className="text-xs font-bold tracking-widest text-[#2FA4E7] uppercase">Transformation Showcase</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-extrabold text-primary leading-tight">
+              Premium Facade Engineering
+            </h2>
+            <p className="text-gray-700 leading-relaxed text-lg">
+              Slide the middle handle to witness how we transform structural building frameworks into majestic, light-reflective glass elevations.
+            </p>
+            <p className="text-gray-600 leading-relaxed text-sm">
+              Our engineering integrates high-performance structural glazing, spider fittings, and premium double-insulated glass units (IGUs) to deliver structural safety, acoustic insulation, and architectural beauty.
+            </p>
+            <div className="mt-2">
+              <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className="inline-block">
+                <Link to="/projects" className="inline-flex items-center gap-2 bg-[#0A4D8C] text-white px-6 py-3.5 rounded-xl font-bold shadow-md hover:bg-dark transition-all text-sm">
+                  Explore Project Gallery
+                </Link>
+              </motion.div>
+            </div>
+          </AnimatedSection>
+          
+          <AnimatedSection variant={fadeRight}>
+            <BeforeAfterSlider />
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ================= TESTIMONIALS ================= */}
+      <section className="py-24 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <AnimatedSection variant={fadeUp} className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-xs font-bold tracking-widest text-[#2FA4E7] uppercase">Client Testimonials</span>
+            <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-primary mt-1">
+              What Architects &amp; Clients Say
+            </h2>
+            <p className="text-gray-600 mt-3 font-medium">
+              We build long-term relationships through architectural integrity and glass innovation.
+            </p>
+          </AnimatedSection>
+          <AnimatedSection variant={fadeUp}>
+            <Testimonials />
+          </AnimatedSection>
         </div>
       </section>
 
       {/* ================= WHY CHOOSE US ================= */}
-      <section className="py-20 bg-light">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-heading font-bold text-center text-primary">
-            Why Choose Us
-          </h2>
+      <section className="py-24 bg-light overflow-hidden border-t border-gray-50">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <AnimatedSection variant={fadeUp}>
+            <h2 className="text-3xl font-heading font-extrabold text-center text-primary mb-16">
+              Why Choose Us
+            </h2>
+          </AnimatedSection>
 
-          <div className="mt-12 grid md:grid-cols-3 gap-8">
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-60px" }}
+            className="grid md:grid-cols-3 gap-8"
+          >
             {[
               "15+ Years Industry Experience",
               "Premium Quality Materials",
@@ -284,64 +340,91 @@ const Home = () => {
               "Timely Project Delivery",
               "Trusted by 1000+ Clients",
             ].map((point, index) => (
-              <div key={index} className="flex items-start gap-3">
-                <FaCheckCircle className="text-primary mt-1" />
-                <p className="text-gray-700">{point}</p>
-              </div>
+              <motion.div 
+                key={index} 
+                variants={fadeUp} 
+                whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(11,79,138,0.08)" }}
+                className="flex items-start gap-4 bg-white p-6 rounded-2xl shadow-sm border border-gray-100/50"
+              >
+                <FaCheckCircle className="text-primary mt-1 shrink-0 text-lg" />
+                <p className="text-gray-700 font-bold">{point}</p>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ================= CONTACT CTA ================= */}
-      <section className="py-20 bg-dark text-white text-center">
-        <h2 className="text-3xl font-heading font-bold">
-          Looking for Reliable Glass & Aluminium Work?
-        </h2>
+      <section className="py-24 bg-dark text-white text-center overflow-hidden">
+        <AnimatedSection variant={fadeUp}>
+          <h2 className="text-3xl md:text-4xl font-heading font-extrabold px-6">
+            Looking for Reliable Glass &amp; Aluminium Work?
+          </h2>
 
-        <p className="mt-4 text-gray-300">
-          Contact Avdesh Glass House today for expert consultation.
-        </p>
+          <p className="mt-4 text-gray-300 px-6 max-w-xl mx-auto text-lg leading-relaxed">
+            Contact Avdhesh Glass House today for professional architectural consultation.
+          </p>
 
-        <div className="mt-8 flex justify-center gap-4 flex-wrap">
-          <a
-            href="tel:099711 58340"
-            className="bg-primary px-6 py-3 rounded-md hover:bg-secondary transition"
-          >
-            Call Now
-          </a>
+          <div className="mt-10 flex justify-center gap-4 flex-wrap px-6">
+            <motion.a
+              href="tel:09971158340"
+              whileHover={{ scale: 1.05, y: -2, boxShadow: "0 8px 24px rgba(11,79,138,0.3)" }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-[#0A4D8C] px-8 py-4 rounded-xl hover:bg-[#1a8fd1] transition font-bold"
+            >
+              Call Now
+            </motion.a>
 
-          <Link
-            to="/contact"
-            className="border border-white px-6 py-3 rounded-md hover:bg-white hover:text-dark transition"
-          >
-            Get a Quote
-          </Link>
-        </div>
+            <motion.div
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Link
+                to="/contact"
+                className="inline-block border border-white px-8 py-4 rounded-xl hover:bg-white hover:text-dark transition font-bold"
+              >
+                Get a Quote
+              </Link>
+            </motion.div>
+          </div>
+        </AnimatedSection>
       </section>
 
-      {/* ================= IMAGE MODAL ================= */}
-      {selectedImage && (
-        <div 
-          className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 backdrop-blur-sm transition-opacity"
-          onClick={() => setSelectedImage(null)}
-        >
-          <button 
-            className="absolute top-6 right-6 text-white hover:text-gray-300 transition z-[101]"
+      {/* ================= IMAGE MODAL (LIGHTBOX) ================= */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 backdrop-blur-sm"
             onClick={() => setSelectedImage(null)}
           >
-            <FaTimes size={40} />
-          </button>
-          
-          <img 
-            src={selectedImage} 
-            alt="Expanded visual" 
-            className="max-w-full max-h-[90vh] object-contain rounded-md shadow-2xl relative z-[101]"
-            onClick={(e) => e.stopPropagation()} 
-          />
-        </div>
-      )}
-    </>
+            <motion.button 
+              initial={{ y: -10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -10, opacity: 0 }}
+              className="absolute top-6 right-6 text-white hover:text-gray-300 transition z-[101]"
+              onClick={() => setSelectedImage(null)}
+              aria-label="Close modal"
+            >
+              <FaTimes size={40} />
+            </motion.button>
+            
+            <motion.img 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              src={selectedImage} 
+              alt="Expanded visual" 
+              className="max-w-full max-h-[90vh] object-contain rounded-md shadow-2xl relative z-[101]"
+              onClick={(e) => e.stopPropagation()} 
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 
